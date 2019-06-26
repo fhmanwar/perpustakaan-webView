@@ -3,6 +3,8 @@ package com.example.perpustakaan;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -34,15 +36,18 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         SwipeRefresh = (SwipeRefreshLayout) this.findViewById(R.id.swipeRefresh);
-        String url = "http://192.168.0.4/perpustakaan/";
+        String url = "http://192.168.100.10/perpustakaan/";
         view = (WebView) this.findViewById(R.id.showWeb);
 
+        view.getSettings().setJavaScriptEnabled(true);
         view.getSettings().setBuiltInZoomControls(true);
         view.getSettings().setDisplayZoomControls(false);
-        view.getSettings().setJavaScriptEnabled(true);
-        view.loadUrl(url);
+//        view.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url="+ url);
+//        view.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
         view.setWebViewClient(new WebViewClient());
-
+        view.loadUrl(url);
+//        init();
+//        listener();
         SwipeRefresh.setOnRefreshListener(
             new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
